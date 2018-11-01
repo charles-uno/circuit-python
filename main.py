@@ -1,9 +1,37 @@
 import analogio
 import board
+import digitalio
 # Is this safe? The memory on this thing is TINY.
 import math
 import pulseio
 import time
+
+# ----------------------------------------------------------------------
+
+def middle_led(dt=0.5):
+
+    # This seems to blink the middle green LED... but not sure exactly
+    # what's going on.
+
+    led = digitalio.DigitalInOut(board.D3)
+    led.direction = digitalio.Direction.OUTPUT
+    led.value = True
+    while True:
+        print('.')
+        led.value = not led.value
+        time.sleep(dt)
+
+
+
+# ----------------------------------------------------------------------
+
+def toggle_red_led(dt=0.5):
+    red_led = digitalio.DigitalInOut(board.D13)
+    red_led.direction = digitalio.Direction.OUTPUT
+    red_led.value = True
+    while True:
+        red_led.value = not red_led.value
+        time.sleep(dt)
 
 # ----------------------------------------------------------------------
 
@@ -39,16 +67,20 @@ def pot_to_freq():
     # Lock in the time step, but let's vary frequency.
     wt, dt = 0, 0.01
     while True:
-#        print('.')
+        print('.')
         voltage = analogin.value * 3.3 / 65536
         # "omega" scales with voltage. Turn the knob to change the speed
-        # of the flashes. 
+        # of the flashes.
         w = voltage*10
         wt += w*dt
         led.duty_cycle = int(0.5*(math.cos(wt) + 1)*65535)
         time.sleep(dt)
 
 # ----------------------------------------------------------------------
+
+middle_led(0.2)
+
+toggle_red_led()
 
 # read_pot()
 
