@@ -34,7 +34,7 @@ def cpe_neopixel_show(n):
     ]
     for i in range(10):
         # Gross, they're ordered counterclockwise.
-        NEOPIXEL[9 - i] = black if i > n else rainbow[i]
+        NEOPIXEL[9 - i] = black if i >= int(n) else rainbow[i]
         NEOPIXEL.show()
     return
 
