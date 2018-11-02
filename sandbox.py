@@ -1,3 +1,4 @@
+
 import adafruit_thermistor
 import analogio
 import array
@@ -14,7 +15,6 @@ import helpers
 
 
 
-
 def cpe_mouse():
     mouse = mouse.Mouse()
 
@@ -26,7 +26,7 @@ def cpe_mouse():
 
         mouse.move(x=voltage)
 
-        time.sleep(0.1)
+        time.sleep(1)
 
 
 
