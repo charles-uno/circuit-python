@@ -1,4 +1,4 @@
 
 
 all:
-	cp -p main.py /media/charles/CIRCUITPY/
+	cp -p *.py /media/charles/CIRCUITPY/
