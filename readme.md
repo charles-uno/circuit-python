@@ -4,6 +4,15 @@ Playing with the **Circuit Playground Express**! No guarantee that anything here
 
 The file system on these things can be a bit flaky. Seems safer to work locally then copy files over. That also makes it easy to swap around `main.py` without losing the old one.
 
+
+## TODO
+
+- IR blaster. This can apparently also be a proximity sensor?
+- Mouse emulation
+- Keyboard emulation
+- Sound output
+- Use slide switch and buttons
+
 ## Mu and the REPL
 
 The REPL is basically a shell on the board. It shows output, and allows you to interrupt (and get a prompt) via Ctrl-C.
