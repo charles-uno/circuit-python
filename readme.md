@@ -38,13 +38,11 @@ sudo screen /dev/ttyACM0 115200
 
 Above, 115200 is a bit rate, which is the same for all CircuitPython boards.
 
-You can also connect to the REPL via Mu, the recommended code editor for CircuitPython. On Linux, you can install Mu using Pip:
+You can also connect to the REPL via Mu, the recommended code editor for CircuitPython. On Linux, you can install Mu using Pip. Note that CircuitPython works only with Python 3, and Mu in particular doesn't get along with Python 3.5 (the default on Ubuntu 16) so you need to use 3.6:
 
 ```
 pip3.6 install -y mu-editor
 ```
-
-Note that CircuitPython works only with Python 3, and Mu in particular doesn't get along with Python 3.5 (the default on Ubuntu 16).
 
 To open the REPL from within Mu, click the "Serial" button. Note that the REPL will only work if you're running Mu as an administrator (or using `sudo`).
 
