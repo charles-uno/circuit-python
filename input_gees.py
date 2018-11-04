@@ -12,7 +12,7 @@ import helpers
 I2C = busio.I2C(board.ACCELEROMETER_SCL, board.ACCELEROMETER_SDA)
 ACCEL = adafruit_lis3dh.LIS3DH_I2C(I2C, address=0x19)
 
-def accelerometer_input():
+def main():
     """Light up to indicate total acceleration."""
     # Note: sitting still, the device should feel one "gee", or 1x
     # gravity. To feel more gees, accelerate it by shaking it around. To
@@ -26,4 +26,4 @@ def accelerometer_input():
 
 # ======================================================================
 
-accelerometer_input()
+main()

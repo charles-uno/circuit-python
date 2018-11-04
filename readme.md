@@ -4,11 +4,9 @@ Playing with the **Circuit Playground Express**! No guarantee that anything here
 
 The file system on these things can be a bit flaky. Seems safer to work locally then copy files over. That also makes it easy to swap around `main.py` without losing the old one.
 
-
 ## TODO
 
 - IR blaster. This can apparently also be a proximity sensor?
-- Mouse emulation
 - Keyboard emulation
 - Sound output
 - Use slide switch and buttons
@@ -37,6 +35,8 @@ The number `115200` is a bit rate, and is the same for all CircuitPython boards.
 
 When you plug in the board, it should look like a thumb drive containing the file `main.py`. You can modify or replace that file. As soon as `main.py` changes, the board will automatically reload it and start running the new one.
 
+All of the example `.py` files in this repo will run when copied over to the board and named `main.py`. Some of them depend on the helpers, so copy `helpers.py` over as well (and do not rename it).
+
 Output is printed to the REPL. If something goes wrong, that's where you'll get a traceback.
 
 ## Flashing the Boot Loader
@@ -47,7 +47,7 @@ Download the new `.uf2` file you want from [here](https://github.com/adafruit/ci
 
 ## Libraries
 
-Libraries go in a folder named `lib`. If it doesn't exist, you can create it yourself. You'll need to track down libraries for some advanced functionality, such as keyboard and mouse emulation. Get them [here](https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/tag/20181030).
+Libraries go in a folder named `lib`. If it doesn't exist, you can create it yourself. You'll need to track down libraries for some advanced functionality, such as keyboard and mouse emulation. Get them [here](https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/).
 
 ## Links
 

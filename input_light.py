@@ -9,7 +9,7 @@ import helpers
 
 EYE = analogio.AnalogIn(board.LIGHT)
 
-def cpe_light_input():
+def main():
     """Light up to show how bright it is"""
     # Not sure of the units, but right up to a light bulb is 60k.
     while True:
@@ -20,4 +20,4 @@ def cpe_light_input():
 
 # ======================================================================
 
-cpe_light_input()
+main()

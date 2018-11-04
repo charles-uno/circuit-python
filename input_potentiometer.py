@@ -9,7 +9,7 @@ import helpers
 
 A0_VOLTAGE = analogio.AnalogIn(board.A0)
 
-def potentiometer_input():
+def main():
     """Light up to show the position of the pot."""
     # On the Trinket M0, A0 is marked "1~". That's the middle output of
     # the pot. The other ones go to ground and 3.3V.
@@ -21,4 +21,4 @@ def potentiometer_input():
 
 # ======================================================================
 
-potentiometer_input()
+main()

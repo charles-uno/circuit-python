@@ -9,7 +9,7 @@ import helpers
 
 THERMISTOR = thermistor = adafruit_thermistor.Thermistor(board.TEMPERATURE, 10000, 10000, 25, 3950)
 
-def cpe_temp_input():
+def main():
     """Light up to show how warm it is."""
     while True:
         temp = THERMISTOR.temperature
@@ -19,4 +19,4 @@ def cpe_temp_input():
 
 # ======================================================================
 
-cpe_temp_input()
+main()

@@ -1,44 +1,43 @@
 
 from adafruit_hid import mouse
+import adafruit_lis3dh
 import board
+import busio
+import math
 import time
-import touchio
 
 # ======================================================================
 
 MOUSE = mouse.Mouse()
 
-# For simplicity, let's just map capacitive touches to mouse directions.
-TOUCH_1 = touchio.TouchIn(board.A1)
-TOUCH_2 = touchio.TouchIn(board.A2)
-TOUCH_3 = touchio.TouchIn(board.A3)
-TOUCH_4 = touchio.TouchIn(board.A4)
-TOUCH_5 = touchio.TouchIn(board.A5)
-TOUCH_6 = touchio.TouchIn(board.A6)
+I2C = busio.I2C(board.ACCELEROMETER_SCL, board.ACCELEROMETER_SDA)
+ACCEL = adafruit_lis3dh.LIS3DH_I2C(I2C, address=0x19)
 
-def touch_mouse():
-    """Control the mouse using capacitive touch."""
+def main():
+    """Use the board like a joystick to move the mouse."""
     while True:
-        if TOUCH_1.value:
-            print('Touched 1')
-            MOUSE.move(x=1)
-        if TOUCH_2.value:
-            print('Touched 2')
-            MOUSE.move(x=-1)
-        if TOUCH_3.value:
-            print('Touched 3')
-            MOUSE.move(y=1)
-        if TOUCH_4.value:
-            print('Touched 4')
-            MOUSE.move(y=-1)
-        if TOUCH_5.value:
-            print('Touched 5')
-            MOUSE.click(mouse.Mouse.LEFT_BUTTON)
-        if TOUCH_6.value:
-            print('Touched 6')
-            MOUSE.click(mouse.Mouse.RIGHT_BUTTON)
-        time.sleep(0.2)
+        ax, ay, az = ACCEL.acceleration
+        atotal = math.sqrt( ax**2 + ay**2 + az**2 )
+        # We can get theta unambigiously since it's just 0 to 180.
+        theta = math.acos(az/atotal)
+        # Outside the range -90 to 90, there are ambiguities in phi.
+        if ax == 0:
+            ax = 0.000001
+        phi = math.atan(ay/ax)
+        if ax > 0:
+            phi = phi + math.pi
+        # The severity of the angle controls how fast we move the mouse.
+        speed = 10*math.sin(theta)
+        # The direction we hold the board is the direction we want the
+        # mouse to move.
+        dx = int(speed*math.sin(phi))
+        dy = int(speed*math.cos(phi))
+        print('dx:', dx, 'dy:', dy)
+        # To line up with the screen, the board should be aligned with
+        # the USB plugin on the right.
+        MOUSE.move(x=dx, y=dy)
+        time.sleep(0.1)
 
 # ======================================================================
 
-mouse_touch()
+main()

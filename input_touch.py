@@ -14,7 +14,7 @@ TOUCHES = [
     touchio.TouchIn(board.A3),
 ]
 
-def cpe_touch_input():
+def main():
     """Touch A1, A2, and A3 to make colors race."""
     while True:
         for channel, touch in enumerate(TOUCHES):
@@ -26,4 +26,4 @@ def cpe_touch_input():
 
 # ======================================================================
 
-cpe_touch_input()
+main()
