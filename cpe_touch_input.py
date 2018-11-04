@@ -17,6 +17,8 @@ def cpe_touch_input():
     """Touch A1, A2, and A3 to make colors race."""
     while True:
         for channel, touch in enumerate(TOUCHES):
+            # touchio.TouchIn(board.A1) is True if A1 is being touched,
+            # False otherwise. 
             if touch.value:
                 helpers.chase_advance(channel)
             else:
