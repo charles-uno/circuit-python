@@ -59,7 +59,6 @@ Download the new `.uf2` file you want from [here](https://github.com/adafruit/ci
 - [CircuitPython Documentation](https://learn.adafruit.com/adafruit-circuit-playground-express)
 - [CircuitPython Guides](https://learn.adafruit.com/category/circuit-playground)
 
-
 ---
 
 ## TODO
@@ -68,3 +67,4 @@ Download the new `.uf2` file you want from [here](https://github.com/adafruit/ci
 - Keyboard emulation
 - Sound output
 - Use slide switch and buttons
+- tap and double-tap detection
