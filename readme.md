@@ -6,7 +6,7 @@ The file system on these things can be a bit flaky. Seems safer to work locally 
 
 ## Quick Start
 
-Plug in the CPX via USB. It should appear like a thumb drive. Copy `helpers.py` onto it. Also choose one of the `main_whatever.py`, rename it `main.py`, and copy it over.
+Plug in the board via USB. It should appear like a thumb drive. Copy `helpers.py` onto it. Also choose one of the `main_whatever.py`, rename it `main.py`, and copy it over.
 
 Take a peek inside `main.py` to see what it does. Usually they're pretty self-explanatory. For example:
 
