@@ -1,6 +1,6 @@
 # Circuit Python
 
-Playing with the Circuit Playground Express!
+Playing with the **Circuit Playground Express**! No guarantee that anything here will work with any other model.
 
 The file system on these things can be a bit flaky. Seems safer to work locally then copy files over. That also makes it easy to swap around `main.py` without losing the old one.
 
