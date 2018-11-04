@@ -1,25 +1,11 @@
 
-
-#from adafruit_circuitplayground.express import cpx
-import array
-import board
-import digitalio
-import math
-import audioio
-
-import helpers
-
-
 import touchio
 import board
 import time
-import neopixel
-import digitalio
-import audioio
 
-SAMPLE_RATE = 8000
-SPEAKER = None
+import helpers
 
+# ======================================================================
 
 TOUCHES = [
     touchio.TouchIn(board.A1),
@@ -27,17 +13,19 @@ TOUCHES = [
     touchio.TouchIn(board.A3),
 ]
 
+def cpe_touch_input():
+    """Touch A1, A2, and A3 to make colors race."""
+    while True:
+        for channel, touch in enumerate(TOUCHES):
+            if touch.value:
+                helpers.chase_advance(channel)
+            else:
+                helpers.chase_clear(channel)
+        time.sleep(0.1)
 
-while True:
+# ======================================================================
 
-    for channel, touch in enumerate(TOUCHES):
-        if touch.value:
-            helpers.chase_advance(channel)
-        else:
-            helpers.chase_clear(channel)
-    time.sleep(0.1)
-
-
+cpe_touch_input()
 
 
 
